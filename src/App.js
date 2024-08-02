@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Home from "./pages/Home";
+import ProtectedRoute from "./services/ProtectedRoute";
 const App = () => {
   return (
     <>
@@ -10,7 +11,10 @@ const App = () => {
         <Routes>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/register" element={<Register />}></Route>
-          <Route path="/" element={<Home />}></Route>
+          {/* protected routes */}
+          <Route path="/" element={<ProtectedRoute />}>
+            <Route path="/" element={<Home />}></Route>
+          </Route>
         </Routes>
       </BrowserRouter>
     </>
